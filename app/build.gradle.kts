@@ -2,12 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
     id("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.seren"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.seren"
@@ -67,6 +68,9 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    //Fonts
+    implementation(libs.androidx.compose.ui.text.google.fonts)
 
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
