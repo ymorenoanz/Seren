@@ -37,15 +37,9 @@ class MoodViewModel @Inject constructor
             MutableStateFlow(MoodUIState(isLoading = true,))
 
     val uiState: StateFlow<MoodUIState> = _uiState
-    var note by mutableStateOf("")
-        private set
 
     init {
         observeMoods()
-    }
-
-    fun updateNote(input: String) {
-       note = input
     }
 
     private fun observeMoods(){
@@ -57,10 +51,12 @@ class MoodViewModel @Inject constructor
                 )
             }
                 .collect { moods ->
-                    _uiState.value = MoodUIState(
-                        isLoading = true,
-                        moods = moods,
-                    )
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            moods = moods
+                        )
+                    }
                 }
         }
     }

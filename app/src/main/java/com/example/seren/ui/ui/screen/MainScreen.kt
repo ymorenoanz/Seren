@@ -1,7 +1,5 @@
-package com.example.seren.ui.ui
+package com.example.seren.ui.ui.screen
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,9 +23,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.example.seren.ui.viewmodel.MoodViewModel
 
 @Composable
@@ -74,9 +69,7 @@ fun LazyColumnMood(viewModel: MoodViewModel = hiltViewModel())
         items(data.moods) { mood ->
             Box(
                 modifier = Modifier
-                    .height(100.dp)
                     .fillMaxWidth()
-                    .background(Color.Magenta)
                     .padding(16.dp)
             )
             Text(text = mood.note ?: "No note")

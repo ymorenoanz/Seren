@@ -1,4 +1,4 @@
-package com.example.seren.ui.ui
+package com.example.seren.ui.ui.screen
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -19,6 +19,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.example.seren.R
+import com.example.seren.domain.model.DayPeriod
 import com.example.seren.domain.model.MoodType
 import com.example.seren.ui.viewmodel.MoodViewModel
 
@@ -40,7 +41,7 @@ import com.example.seren.ui.viewmodel.MoodViewModel
 @Composable
 fun AddMoodScreen(navController: NavController){
     val viewModel: MoodViewModel = hiltViewModel()
-    val uiState = viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
 
     Card(modifier = Modifier.fillMaxSize()){
@@ -56,26 +57,30 @@ fun AddMoodScreen(navController: NavController){
 
             //Mood selector
             MoodSelector(
-                selectedMood = viewModel.uiState.collectAsState()
-                    .value.selectedMood
+                selectedMood = uiState.selectedMood
             ) {
                 mood ->
                 viewModel.onMoodSelected(mood)
             }
 
             //Period selector
-            //Pending
-            DropDownMenu()
-
+            PeriodSelector(
+                selectedPeriod = uiState.selectedPeriod) {
+                period ->
+                viewModel.onPeriodSelected(period)
+            }
 
             //Note textField
             OutlinedTextField(
-                value = uiState.value.note,
+                value = uiState.note,
                 onValueChange = {
                     viewModel.onNoteChange(it)
                 },
                 label = { Text("Note (optional)") }
             )
+
+            //Text("Mood: ${uiState.selectedMood}")
+            //Text("Period: ${uiState.selectedPeriod}")
 
 
             //Buttons
@@ -88,9 +93,10 @@ fun AddMoodScreen(navController: NavController){
                 }
 
                 Button(
-                    onClick = { viewModel.addMood()},
-                    enabled = uiState.value.selectedMood != null
-                            && uiState.value.selectedPeriod != null
+                    onClick = { viewModel.addMood()
+                        navController.popBackStack()},
+                    enabled = uiState.selectedMood != null
+                            && uiState.selectedPeriod != null
                 ) {
                     Text("Save")
                 }
@@ -99,10 +105,13 @@ fun AddMoodScreen(navController: NavController){
     }
 }
 
-
 @Composable
 //Period selector
-fun DropDownMenu() {
+fun PeriodSelector(
+    selectedPeriod: DayPeriod?,
+    onPeriodSelected: (DayPeriod) -> Unit
+
+) {
     val isDropDownExpanded = remember {
         mutableStateOf(false)
     }
@@ -111,7 +120,8 @@ fun DropDownMenu() {
         mutableStateOf(0)
     }
 
-    val usernames = listOf("Morning", "Night")
+    val periods = DayPeriod.entries
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -126,7 +136,7 @@ fun DropDownMenu() {
                     isDropDownExpanded.value = true
                 }
             ) {
-                Text(text = usernames[itemPosition.value])
+                Text(text = selectedPeriod?.name ?: "Select period")
                 Image(
                     painter = painterResource(id = R.drawable.dropdown),
                     contentDescription = "DropDown Icon"
@@ -137,13 +147,14 @@ fun DropDownMenu() {
                 onDismissRequest = {
                     isDropDownExpanded.value = false
                 }) {
-                usernames.forEachIndexed { index, username ->
+                periods.forEachIndexed { index, period ->
                     DropdownMenuItem(text = {
-                        Text(text = username)
+                        Text(text = period.toString())
                     },
                         onClick = {
                             isDropDownExpanded.value = false
                             itemPosition.value = index
+                            onPeriodSelected(period)
                         })
                 }
             }
@@ -151,6 +162,7 @@ fun DropDownMenu() {
 
     }
 }
+
 
 //Mood selector
 @Composable
@@ -174,7 +186,7 @@ fun MoodSelector(
                 text = emoji,
                 fontSize = if (selectedMood == mood) 48.sp else 32.sp,
                 modifier = Modifier
-                    .clickable { onMoodSelected(mood) }
+                    .clickable { onMoodSelected(mood)}
                     .padding(8.dp)
                     .graphicsLayer {
                         // Add a little scale animation here if you like
