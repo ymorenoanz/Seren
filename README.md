@@ -57,8 +57,13 @@ The goal is to provide a space that feels quiet, personal, and reflective.
 ---
 
 ## 📸 Screenshots
+A glimpse into SerenApp’s calm and reflective experience 🌙
 
-*(Add screenshots here later)*
+<p align="center">
+  <img src="screenshots/home_screen.png" width="250"/>
+  <img src="screenshots/addmood_screen.png" width="250"/>
+  <img src="screenshots/addmood_2.png" width="250"/>
+</p>
 
 ---
 
@@ -74,6 +79,5 @@ The goal is to provide a space that feels quiet, personal, and reflective.
 
 - Mood history timeline
 - UI polish with subtle animations
-- Dark mode refinement
-- Notifications / reminders
-- Cloud sync
+- Hobby ideas for mental health
+- Graphics/statistics
