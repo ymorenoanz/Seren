@@ -59,11 +59,11 @@ The goal is to provide a space that feels quiet, personal, and reflective.
 ## 📸 Screenshots
 A glimpse into SerenApp’s calm and reflective experience 🌙
 
-<p align="center">
-  <img src="screenshots/home_screen.png" width="250"/>
-  <img src="screenshots/addmood_screen.png" width="250"/>
-  <img src="screenshots/addmood_2.png" width="250"/>
-</p>
+### 🌙 Home — Today’s Reflection
+![Home Screen](screenshots/home_screen.png)
+
+### ✨ Add Mood — Capture Your Moment
+![Add Mood](screenshots/addmood_screen.png)
 
 ---
 
