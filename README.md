@@ -1,5 +1,3 @@
-README.md
-
 # SerenApp 🌙
 
 > A calm space to reflect on your emotions
@@ -60,11 +58,8 @@ The goal is to provide a space that feels quiet, personal, and reflective.
 
 ## 📸 Screenshots
 
-### 🌙 Home — Today’s Reflection
-![Home Screen](screenshots/home_screen.png)
+*(Add screenshots here later)*
 
-### ✨ Add Mood — Capture Your Moment
-![Add Mood](screenshots/addmood_screen.png)
 ---
 
 ## 🚀 How to Run
@@ -79,6 +74,6 @@ The goal is to provide a space that feels quiet, personal, and reflective.
 
 - Mood history timeline
 - UI polish with subtle animations
-- Graphics/statistics
-- Hobby ideas for mental health
-- Motivational phrases during the day
+- Dark mode refinement
+- Notifications / reminders
+- Cloud sync
