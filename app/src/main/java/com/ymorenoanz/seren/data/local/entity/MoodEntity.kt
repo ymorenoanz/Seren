@@ -1,4 +1,4 @@
-package com.example.seren.data.local.entity
+package com.ymorenoanz.seren.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.Index

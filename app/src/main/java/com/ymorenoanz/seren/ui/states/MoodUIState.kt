@@ -1,8 +1,8 @@
-package com.example.seren.ui.states
+package com.ymorenoanz.seren.ui.states
 
-import com.example.seren.domain.model.DayPeriod
-import com.example.seren.domain.model.MoodEntry
-import com.example.seren.domain.model.MoodType
+import com.ymorenoanz.seren.domain.model.DayPeriod
+import com.ymorenoanz.seren.domain.model.MoodEntry
+import com.ymorenoanz.seren.domain.model.MoodType
 
 data class MoodUIState(
     val isLoading: Boolean = false,

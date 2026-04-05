@@ -1,9 +1,9 @@
-package com.example.seren.data.local.database
+package com.ymorenoanz.seren.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.seren.data.local.dao.MoodDao
-import com.example.seren.data.local.entity.MoodEntity
+import com.ymorenoanz.seren.data.local.dao.MoodDao
+import com.ymorenoanz.seren.data.local.entity.MoodEntity
 
 @Database(
     entities = [MoodEntity::class],

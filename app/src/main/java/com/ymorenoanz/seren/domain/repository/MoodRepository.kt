@@ -1,6 +1,6 @@
-package com.example.seren.domain.repository
+package com.ymorenoanz.seren.domain.repository
 
-import com.example.seren.domain.model.MoodEntry
+import com.ymorenoanz.seren.domain.model.MoodEntry
 import kotlinx.coroutines.flow.Flow
 
 interface MoodRepository {

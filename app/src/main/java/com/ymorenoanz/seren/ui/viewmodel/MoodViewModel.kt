@@ -1,19 +1,15 @@
-package com.example.seren.ui.viewmodel
+package com.ymorenoanz.seren.ui.viewmodel
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.seren.domain.model.DayPeriod
-import com.example.seren.domain.model.MoodEntry
-import com.example.seren.domain.model.MoodType
-import com.example.seren.domain.usecases.AddMoodUseCase
-import com.example.seren.domain.usecases.GetMoodEntriesUseCase
-import com.example.seren.ui.states.MoodUIState
+import com.ymorenoanz.seren.domain.model.DayPeriod
+import com.ymorenoanz.seren.domain.model.MoodEntry
+import com.ymorenoanz.seren.domain.model.MoodType
+import com.ymorenoanz.seren.domain.usecases.AddMoodUseCase
+import com.ymorenoanz.seren.domain.usecases.GetMoodEntriesUseCase
+import com.ymorenoanz.seren.ui.states.MoodUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,7 +18,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
-import kotlin.math.log
 
 @HiltViewModel
 class MoodViewModel @Inject constructor

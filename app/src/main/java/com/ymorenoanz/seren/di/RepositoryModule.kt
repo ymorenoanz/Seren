@@ -1,7 +1,7 @@
-package com.example.seren.di
+package com.ymorenoanz.seren.di
 
-import com.example.seren.data.repository.MoodRepositoryImpl
-import com.example.seren.domain.repository.MoodRepository
+import com.ymorenoanz.seren.data.repository.MoodRepositoryImpl
+import com.ymorenoanz.seren.domain.repository.MoodRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.example.seren.ui.theme
+package com.ymorenoanz.seren.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

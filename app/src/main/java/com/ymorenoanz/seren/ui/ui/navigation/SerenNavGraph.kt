@@ -1,4 +1,4 @@
-package com.example.seren.ui.ui.navigation
+package com.ymorenoanz.seren.ui.ui.navigation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.seren.ui.ui.screen.AddMoodScreen
-import com.example.seren.ui.ui.screen.MainScreen
+import com.ymorenoanz.seren.ui.ui.screen.AddMoodScreen
+import com.ymorenoanz.seren.ui.ui.screen.MainScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

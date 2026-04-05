@@ -1,11 +1,11 @@
-package com.example.seren.data.mapper
+package com.ymorenoanz.seren.data.mapper
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.seren.data.local.entity.MoodEntity
-import com.example.seren.domain.model.DayPeriod
-import com.example.seren.domain.model.MoodEntry
-import com.example.seren.domain.model.MoodType
+import com.ymorenoanz.seren.data.local.entity.MoodEntity
+import com.ymorenoanz.seren.domain.model.DayPeriod
+import com.ymorenoanz.seren.domain.model.MoodEntry
+import com.ymorenoanz.seren.domain.model.MoodType
 import java.time.LocalDate
 
 

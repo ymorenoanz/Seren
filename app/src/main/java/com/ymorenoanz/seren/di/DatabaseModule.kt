@@ -1,9 +1,9 @@
-package com.example.seren.di
+package com.ymorenoanz.seren.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.seren.data.local.dao.MoodDao
-import com.example.seren.data.local.database.SerenDatabase
+import com.ymorenoanz.seren.data.local.dao.MoodDao
+import com.ymorenoanz.seren.data.local.database.SerenDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.example.seren
+package com.ymorenoanz.seren
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

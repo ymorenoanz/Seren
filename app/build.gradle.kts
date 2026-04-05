@@ -4,10 +4,11 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.seren"
+    namespace = "com.ymorenoanz.seren"
     compileSdk = 36
 
     defaultConfig {
@@ -71,6 +72,11 @@ dependencies {
 
     //Fonts
     implementation(libs.androidx.compose.ui.text.google.fonts)
+
+    //Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.analytics)
 
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)

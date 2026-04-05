@@ -1,12 +1,12 @@
-package com.example.seren.data.repository
+package com.ymorenoanz.seren.data.repository
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.seren.data.local.dao.MoodDao
-import com.example.seren.data.mapper.toDomain
-import com.example.seren.data.mapper.toEntity
-import com.example.seren.domain.model.MoodEntry
-import com.example.seren.domain.repository.MoodRepository
+import com.ymorenoanz.seren.data.local.dao.MoodDao
+import com.ymorenoanz.seren.data.mapper.toDomain
+import com.ymorenoanz.seren.data.mapper.toEntity
+import com.ymorenoanz.seren.domain.model.MoodEntry
+import com.ymorenoanz.seren.domain.repository.MoodRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

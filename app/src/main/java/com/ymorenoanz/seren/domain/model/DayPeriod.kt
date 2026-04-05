@@ -1,4 +1,4 @@
-package com.example.seren.domain.model
+package com.ymorenoanz.seren.domain.model
 
 enum class DayPeriod {
     MORNING,

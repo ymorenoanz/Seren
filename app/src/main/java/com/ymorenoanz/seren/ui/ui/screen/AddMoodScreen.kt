@@ -1,4 +1,4 @@
-package com.example.seren.ui.ui.screen
+package com.ymorenoanz.seren.ui.ui.screen
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -30,10 +30,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.seren.R
-import com.example.seren.domain.model.DayPeriod
-import com.example.seren.domain.model.MoodType
-import com.example.seren.ui.viewmodel.MoodViewModel
+import com.ymorenoanz.seren.R
+import com.ymorenoanz.seren.domain.model.DayPeriod
+import com.ymorenoanz.seren.domain.model.MoodType
+import com.ymorenoanz.seren.ui.viewmodel.MoodViewModel
 
 
 //Improve UI and continue study Compose

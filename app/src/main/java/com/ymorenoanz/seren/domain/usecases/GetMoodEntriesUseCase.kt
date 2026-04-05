@@ -1,7 +1,7 @@
-package com.example.seren.domain.usecases
+package com.ymorenoanz.seren.domain.usecases
 
-import com.example.seren.domain.model.MoodEntry
-import com.example.seren.domain.repository.MoodRepository
+import com.ymorenoanz.seren.domain.model.MoodEntry
+import com.ymorenoanz.seren.domain.repository.MoodRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

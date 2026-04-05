@@ -1,4 +1,4 @@
-package com.example.seren
+package com.ymorenoanz.seren
 
 import org.junit.Test
 
