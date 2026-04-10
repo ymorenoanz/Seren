@@ -1,9 +1,15 @@
 package com.ymorenoanz.seren.ui.viewmodel
 
+import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.ymorenoanz.seren.domain.model.DayPeriod
 import com.ymorenoanz.seren.domain.model.MoodEntry
 import com.ymorenoanz.seren.domain.model.MoodType
@@ -61,6 +67,14 @@ class MoodViewModel @Inject constructor
     @RequiresApi(Build.VERSION_CODES.O)
     fun addMood(){
         val state = _uiState.value
+        val user = FirebaseAuth.getInstance().currentUser
+
+        if (user == null) {
+            _uiState.update {
+                it.copy(error = "User not authenticated")
+            }
+            return
+        }
 
         // 1. Validate inputs
         val moodError = if (state.selectedMood == null) "Select a mood" else null
@@ -115,4 +129,6 @@ class MoodViewModel @Inject constructor
         }
     }
 }
+
+
 

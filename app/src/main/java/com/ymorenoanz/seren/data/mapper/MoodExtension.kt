@@ -9,6 +9,5 @@ fun MoodType.toEmoji(): String {
         MoodType.NEUTRAL -> "😐"
         MoodType.HAPPY -> "🙂"
         MoodType.VERY_HAPPY -> "😄"
-
     }
 }

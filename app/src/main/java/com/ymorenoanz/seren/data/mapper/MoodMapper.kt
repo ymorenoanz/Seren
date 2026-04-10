@@ -2,6 +2,7 @@ package com.ymorenoanz.seren.data.mapper
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.google.firebase.auth.FirebaseAuth
 import com.ymorenoanz.seren.data.local.entity.MoodEntity
 import com.ymorenoanz.seren.domain.model.DayPeriod
 import com.ymorenoanz.seren.domain.model.MoodEntry
@@ -11,6 +12,7 @@ import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun MoodEntity.toDomain(): MoodEntry {
+
     return MoodEntry(
         id = id,
         date = LocalDate.parse(date),

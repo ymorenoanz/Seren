@@ -25,17 +25,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.google.firebase.auth.FirebaseAuth
 import com.ymorenoanz.seren.data.mapper.toEmoji
 import com.ymorenoanz.seren.domain.model.DayPeriod
 import com.ymorenoanz.seren.domain.model.MoodEntry
 import com.ymorenoanz.seren.domain.model.MoodType
+import com.ymorenoanz.seren.ui.viewmodel.LoginViewModel
 import com.ymorenoanz.seren.ui.viewmodel.MoodViewModel
 import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainScreen( navController: NavController,
-                viewModel: MoodViewModel = hiltViewModel()) {
+                viewModel: MoodViewModel = hiltViewModel(),
+                userName: String) {
     val uiState by viewModel.uiState.collectAsState()
 
     val today = LocalDate.now()
@@ -67,7 +70,7 @@ fun MainScreen( navController: NavController,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             item {
-                Text("Hello, Yari 🌙")
+                Text(text = "Hello, $userName 🌙")
             }
 
             item {
@@ -77,7 +80,6 @@ fun MainScreen( navController: NavController,
                     period = todayMood?.period,
                     note = todayMood?.note
                 )
-
             }
 
             item {
@@ -118,7 +120,6 @@ fun TodayMoodCard(
             )
 
             Text(
-                //text = mood?.toEmoji()  ?: "No mood yet",
                 text = "${mood?.toEmoji()} ${mood?.name} ${if (mood != null) "🌙" 
                 else "No mood yet 🌙"}",
                 fontSize = 26.sp

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -7,18 +9,30 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+val localProperties = Properties()
+val localFile = rootProject.file("local.properties")
+
+if (localFile.exists()) {
+    localFile.inputStream().use { input ->
+        localProperties.load(input)
+    }
+}
+
+val webClientId = localProperties.getProperty("WEB_CLIENT") ?: ""
+
 android {
     namespace = "com.ymorenoanz.seren"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.seren"
+        applicationId = "com.ymorenoanz.seren"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "WEB_CLIENT", "\"$webClientId\"")
     }
 
     buildTypes {
@@ -39,7 +53,9 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
+
 }
 
 dependencies {
@@ -53,6 +69,7 @@ dependencies {
     implementation(libs.ui)
     implementation(libs.material3)
     implementation(libs.ui.tooling.preview)
+
     debugImplementation(libs.ui.tooling)
     implementation(libs.androidx.activity.compose.v190)
     implementation(libs.androidx.lifecycle.runtime.compose)
@@ -73,10 +90,12 @@ dependencies {
     //Fonts
     implementation(libs.androidx.compose.ui.text.google.fonts)
 
-    //Firebase
+    // Firebase
     implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
+
+    // Google Sign-In
+    implementation(libs.play.services.auth)
 
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
