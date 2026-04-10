@@ -73,6 +73,8 @@ A glimpse into SerenApp’s calm and reflective experience 🌙
 2. Open in Android Studio
 3. Run the app on an emulator or physical device
 
+## 🔐 Setup
+To run this project, you need to add your own `google-services.json` file from Firebase.
 ---
 
 ## 🎯 Future Improvements

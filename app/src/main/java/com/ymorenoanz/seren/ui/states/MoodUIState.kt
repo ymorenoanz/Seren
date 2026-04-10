@@ -6,6 +6,7 @@ import com.ymorenoanz.seren.domain.model.MoodType
 
 data class MoodUIState(
     val isLoading: Boolean = false,
+    val isLoggedIn: Boolean = false,
     val moods: List<MoodEntry> = emptyList(),
     val error: String? = null,
     val selectedMood: MoodType? = null,
@@ -13,5 +14,6 @@ data class MoodUIState(
     val selectedPeriod: DayPeriod? = null,
     val moodError: String? = null,
     val periodError: String? = null,
-    val noteError: String? = null
+    val noteError: String? = null,
+    val userName: String? = ""
 )
