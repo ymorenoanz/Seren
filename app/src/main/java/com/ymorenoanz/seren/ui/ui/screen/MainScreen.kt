@@ -2,6 +2,7 @@ package com.ymorenoanz.seren.ui.ui.screen
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,8 +15,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,15 +28,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.google.firebase.auth.FirebaseAuth
 import com.ymorenoanz.seren.data.mapper.toEmoji
 import com.ymorenoanz.seren.domain.model.DayPeriod
 import com.ymorenoanz.seren.domain.model.MoodEntry
 import com.ymorenoanz.seren.domain.model.MoodType
-import com.ymorenoanz.seren.ui.viewmodel.LoginViewModel
 import com.ymorenoanz.seren.ui.viewmodel.MoodViewModel
 import java.time.LocalDate
 
+@OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainScreen( navController: NavController,
@@ -41,12 +43,24 @@ fun MainScreen( navController: NavController,
                 userName: String) {
     val uiState by viewModel.uiState.collectAsState()
 
+    //Show the mood of the day
     val today = LocalDate.now()
     val todayMood = uiState.moods.find {
         it.date == today
     }
 
+    //Put the button on the bottom
     Scaffold(
+        topBar = {
+            TopAppBar(title = {Text(text = "Hello, $userName 🌙")},
+            actions = {
+                Text(text = "Logout",
+                    modifier = Modifier.clickable{
+                        viewModel.handleLogout()
+                        navController.navigate("login"){
+                            popUpTo("home") {inclusive = true}
+                        } })
+            } )},
         bottomBar = {
             Box(
                 modifier = Modifier
@@ -69,9 +83,9 @@ fun MainScreen( navController: NavController,
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            item {
+            /*item {
                 Text(text = "Hello, $userName 🌙")
-            }
+            }*/
 
             item {
                 // Today Mood Card
@@ -120,10 +134,12 @@ fun TodayMoodCard(
             )
 
             Text(
-                text = "${mood?.toEmoji()} ${mood?.name} ${if (mood != null) "🌙" 
-                else "No mood yet 🌙"}",
+                text = if (mood != null) {
+                    "${mood.toEmoji()} ${mood.name} 🌙"
+                } else {
+                    "No mood yet 🌙"
+                },
                 fontSize = 26.sp
-
             )
 
             Text(
