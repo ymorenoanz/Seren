@@ -22,24 +22,12 @@ import com.ymorenoanz.seren.ui.viewmodel.MoodViewModel
 import com.ymorenoanz.seren.BuildConfig
 import com.ymorenoanz.seren.data.mapper.UserMap
 import com.ymorenoanz.seren.ui.viewmodel.LoginViewModel
+import com.ymorenoanz.seren.ui.viewmodel.SessionViewModel
 import java.net.URLEncoder
 
 @Composable
 fun LoginScreen(navController: NavController,
-                viewModel: LoginViewModel = hiltViewModel()) {
-
-    //Invoke the variable from
-    val uiState by viewModel.uiState.collectAsState()
-
-    LaunchedEffect(uiState.isLoggedIn) {
-        if (uiState.isLoggedIn) {
-
-            val safeName = uiState.userName?.ifBlank { "User" }
-            val encodedName = URLEncoder.encode(safeName, "UTF-8")
-
-            navController.navigate("home/$encodedName")
-        }
-    }
+    viewModel: LoginViewModel = hiltViewModel()) {
 
     // Access the variable
     val webClientId = BuildConfig.WEB_CLIENT

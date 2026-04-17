@@ -33,6 +33,7 @@ import com.ymorenoanz.seren.domain.model.DayPeriod
 import com.ymorenoanz.seren.domain.model.MoodEntry
 import com.ymorenoanz.seren.domain.model.MoodType
 import com.ymorenoanz.seren.ui.viewmodel.MoodViewModel
+import com.ymorenoanz.seren.ui.viewmodel.SessionViewModel
 import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,8 +41,10 @@ import java.time.LocalDate
 @Composable
 fun MainScreen( navController: NavController,
                 viewModel: MoodViewModel = hiltViewModel(),
-                userName: String) {
+                sessionViewModel: SessionViewModel) {
+
     val uiState by viewModel.uiState.collectAsState()
+    val userName = sessionViewModel.userName ?: "User"
 
     //Show the mood of the day
     val today = LocalDate.now()
@@ -56,7 +59,7 @@ fun MainScreen( navController: NavController,
             actions = {
                 Text(text = "Logout",
                     modifier = Modifier.clickable{
-                        viewModel.handleLogout()
+                        sessionViewModel.logout()
                         navController.navigate("login"){
                             popUpTo("home") {inclusive = true}
                         } })
@@ -83,9 +86,9 @@ fun MainScreen( navController: NavController,
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            /*item {
+            item {
                 Text(text = "Hello, $userName 🌙")
-            }*/
+            }
 
             item {
                 // Today Mood Card
@@ -135,7 +138,7 @@ fun TodayMoodCard(
 
             Text(
                 text = if (mood != null) {
-                    "${mood.toEmoji()} ${mood.name} 🌙"
+                    "${mood.toEmoji()} ${mood?.name} 🌙"
                 } else {
                     "No mood yet 🌙"
                 },
