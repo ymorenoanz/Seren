@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ymorenoanz.seren.ui.states.SessionState
 import com.ymorenoanz.seren.ui.ui.screen.AddMoodScreen
+import com.ymorenoanz.seren.ui.ui.screen.LoadingScreen
 import com.ymorenoanz.seren.ui.ui.screen.LoginScreen
 import com.ymorenoanz.seren.ui.ui.screen.MainScreen
 import com.ymorenoanz.seren.ui.viewmodel.MoodViewModel
@@ -46,15 +47,17 @@ fun SerenNavGraph(
                 }
             }
 
-            SessionState.Loading -> {
-            }
+            SessionState.Loading -> Unit
         }
     }
 
     NavHost(
         navController = navController,
-        startDestination = "login"
+        startDestination = "loading"
     ) {
+        composable(route = "loading") {
+            LoadingScreen()
+        }
         composable(route = "login") {
             LoginScreen(navController)
         }

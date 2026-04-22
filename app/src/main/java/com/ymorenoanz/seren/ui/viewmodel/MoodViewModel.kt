@@ -128,10 +128,6 @@ class MoodViewModel @Inject constructor
             it.copy(note = note)
         }
     }
-
-    fun handleLogout(){
-        FirebaseAuth.getInstance().signOut()
-    }
 }
 
 
